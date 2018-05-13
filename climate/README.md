@@ -1,3 +1,21 @@
+---
+title: "CIMIS.Rmd"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
 library(RCurl)
 # source.url <- c("https://raw.githubusercontent.com/cordphelps/gradient/master/climate/CIMIS/daily231.csv")
 #nino <- read.csv(source.url, header=TRUE, row.names=NULL)
@@ -15,8 +33,13 @@ colnames(nino) <- c('station', 'date', 'julian', 'refETo', 'QCETo', 'precip', 'Q
                        'windRun', 'QCwindRun', 'aveSoilTemp', 'QCaveSoilTemp')
 
 saveRDS(nino, file="/Users/rcphelps/code/thesis/climate/nino.rds")
+```
 
+## Including Plots
 
+You can also embed plots, for example:
+
+```{r pressure, echo=TRUE}
 library(gridExtra)
 library(ggplot2)
 
@@ -34,4 +57,6 @@ plot3 <- ggplot(data = nino) + geom_line(aes(y = maxRelHumidity, x = julian), co
 plot4 <- ggplot(data = nino) + geom_line(aes(y = aveSoilTemp, x = julian), colour = "blue") + 
   ylim(0,90)
 grid.arrange(plot1, plot2, plot3, plot4)
+```
 
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
