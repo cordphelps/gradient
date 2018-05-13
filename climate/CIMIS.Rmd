@@ -1,8 +1,6 @@
 ---
 title: "CIMIS.Rmd"
-output:
-  html_document:
-    df_print: paged
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
